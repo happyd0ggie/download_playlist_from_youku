@@ -27,12 +27,7 @@ class Downloader(object):
         os.system('you-get "http:{0}"'.format(href))
 
     def go(self):
-        html = ''
-        with open(self.elements, 'r') as f:
-            for line in f:
-                html += line.strip('\n')
-        
-        soup = BeautifulSoup(html, 'lxml')
+        soup = BeautifulSoup(open(self.elements, 'r'), 'lxml')
         urls = soup.find_all('a', class_ = 'A')
 
         p = Pool(len(urls))
