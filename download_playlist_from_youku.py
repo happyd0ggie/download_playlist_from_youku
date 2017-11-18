@@ -22,7 +22,7 @@ from bs4 import BeautifulSoup
 class Downloader(object):
     def __init__(self, elements):
         self.elements = elements
-        
+
     def download(self, href):
         os.system('you-get "http:{0}"'.format(href))
 
@@ -49,8 +49,9 @@ def main():
     if len(sys.argv) < 2:
         usage()
         sys.exit()
-    
-    downloader = Downloader(sys.argv[1])
+
+    url_path = sys.argv[1]
+    downloader = Downloader(url_path)
     downloader.go()
 
 if __name__ == '__main__':
